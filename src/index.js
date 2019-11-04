@@ -5,9 +5,20 @@ import shoppingList from './shopping-list';
 import api from './api';
 
 const main = function () {
-  api.getItems()
+  api.createItem('pears')
   .then(res => res.json())
-  .then(res => console.log(res));
+  .then((newItem) => {
+    return api.getItems();
+  })
+  .then(res => res.json())
+  .then((items) => {
+    console.log(items);
+  });
+
+  // api.getItems()
+  // .then(res => res.json())
+  // .then(res => console.log(res));
+
   shoppingList.bindEventListeners();
   shoppingList.render();
 };
