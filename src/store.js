@@ -9,8 +9,14 @@ const findById = function (id) {
 
 const findAndUpdate = function (id, newData){
   const foundItem = this.items.find(item => item.id === id);
-  return const objAss = Object.assign(foundItem,newData);
+  return Object.assign(foundItem, newData);
 };
+
+// const findAndUpdate = function (id, newData) {
+//   let foundItem = this.findById(id);
+//   Object.assign(foundItem, newData);
+// };
+
 
 const addItem = function (item) {
   this.items.push(item);
