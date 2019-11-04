@@ -24,12 +24,12 @@ const main = function () {
       console.log(items);
     });
 
-//  api.getItems()
-//    .then(res => res.json())
-//    .then(res => console.log(res));
+ api.getItems()
+   .then(res => res.json())
+   .then(res => console.log(res));
 
   shoppingList.bindEventListeners();
-//  shoppingList.render();
+  shoppingList.render();
 };
 
 $(main);

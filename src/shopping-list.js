@@ -1,5 +1,5 @@
 import $ from 'jquery';
-
+import api from './api.js';
 import store from './store';
 import item from './item';
 
@@ -51,9 +51,14 @@ const handleNewItemSubmit = function () {
     event.preventDefault();
     const newItemName = $('.js-shopping-list-entry').val();
     $('.js-shopping-list-entry').val('');
-    store.addItem(newItemName);
-    render();
+    api.createItem(newItemName)
+    .then(res => res.json())
+    .then((newItem) => {
+      store.addItem(newItem);
+      render();
+    });
   });
+  
 };
 
 const getItemIdFromElement = function (item) {
@@ -109,5 +114,5 @@ const bindEventListeners = function () {
 // This object contains the only exposed methods from this module:
 export default {
   render,
-  bindEventListeners
+  bindEventListeners,
 };
