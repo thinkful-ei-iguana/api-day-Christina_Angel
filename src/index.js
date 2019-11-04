@@ -7,15 +7,6 @@ import store from './store.js';
 
 
 const main = function () {
-  api.getItems()
-    .then(res => res.json())
-    .then((items) => {
-      const item = items[0];
-      return api.updateItem(item.id, { name: 'foobar' });
-    })
-    .then(res => res.json())
-    .then(() => console.log('updated!'));
-
   api.createItem('pears')
     .then(res => res.json())
     .then((newItem) => {
@@ -26,15 +17,17 @@ const main = function () {
       console.log(items);
     });
 
-  api.getItems()
+    api.getItems()
     .then(res => res.json())
     .then((items) => {
-      const item = items[0];
-      return api.updateItem(item.id, { name: 'foobar' });
-    })
-    .then(res => res.json())
-    .then(() => console.log('updated!'));
-
+      items.forEach((item) => store.addItem(item));
+      shoppingList.render();
+    });
+   
+  const item = store.items[0];
+    console.log('current name: ' + item.name);
+    store.findAndUpdate(item.id, { name: 'foobar' });
+    console.log('new name: ' + item.name);
   shoppingList.bindEventListeners();
   shoppingList.render();
 };
