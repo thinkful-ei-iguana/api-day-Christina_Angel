@@ -1,13 +1,14 @@
 const BASE_URL = 'https://thinkful-list-api.herokuapp.com/Christina_Angel';
 
-// const createItem = function () {
 
-// };
 
 const getItems = function () {
-  return Promise.resolve('A successful response!');
+  return fetch(`${BASE_URL}/items`);
+  
 };
 
 export default {
-  getItems
+  getItems,
+//  createItem
+
 };
