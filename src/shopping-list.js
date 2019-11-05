@@ -95,7 +95,7 @@ const handleItemCheckClicked = function () {
     const id = getItemIdFromElement(event.currentTarget);
     store.findAndToggleChecked(id);
     api.updateItem(id, {item : !item.checked})
-      .then(res => res.json());
+      .then(res => res.json())
       .then(store.findAndUpdate(id, {item : !item.checked}));
     render();
   });
